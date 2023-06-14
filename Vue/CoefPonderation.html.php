@@ -53,11 +53,11 @@
             <?php echo $ligne['libelle']; ?>
             </td>
             <td>
-            <input class="Modif ressource" type="number" name="libelle" value="<?php echo $ligne['ressource']; ?>" classe="ressource" data-id-discipline="<?php echo $ligne['id_discipline']; ?>">
+            <input class="Modif ressource" type="number" data="<?php echo $ligne['id_discipline']; ?>_R" name="libelle" value="<?php echo $ligne['ressource']; ?>" classe="ressource" data-id-discipline="<?php echo $ligne['id_discipline']; ?>">
             </td>
             <td>
               <form action="" method="post">
-              <input class="Modif examen" type="number" name="libelle" value="<?php echo $ligne['examen']; ?>" classe="examen" data-id-discipline="<?php echo $ligne['id_discipline']; ?>">
+              <input class="Modif examen" type="number" data="<?php echo $ligne['id_discipline']; ?>_E" name="libelle" value="<?php echo $ligne['examen']; ?>" classe="examen" data-id-discipline="<?php echo $ligne['id_discipline']; ?>">
               </form>
             </td>
             <td>

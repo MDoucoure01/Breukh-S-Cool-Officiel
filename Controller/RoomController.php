@@ -35,15 +35,16 @@ class RoomController extends Controller
 
         foreach ($updatedData as $item) {
             $id_discipline = $item['id_discipline'];
-
-            if (isset($item['ressource'])) {
-                $ressource = $item['ressource'];
-                $this->model->Modifier(['id_discipline' => $id_discipline, 'ressource' => $ressource]);
+            $valeur = $item['valeur'];
+            $direction = $item['direction'];
+            if ($direction == 'R') {
+                $valeur = $item['valeur'];
+                $this->model->Modifier(['id_discipline' => $id_discipline, 'ressource' => $valeur]);
             }
 
-            if (isset($item['examen'])) {
-                $examen = $item['examen'];
-                $this->model->Modifier(['id_discipline' => $id_discipline, 'examen' => $examen]);
+            if ($direction == 'E') {
+                $valeur = $item['valeur'];
+                $this->model->Modifier(['id_discipline' => $id_discipline, 'examen' => $valeur]);
             }
         }
     }

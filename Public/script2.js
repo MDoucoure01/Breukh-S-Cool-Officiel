@@ -28,38 +28,52 @@ const mettreAJourBtn = document.querySelector('.mettre-a-jour');
 
 const inputs = document.querySelectorAll('.Modif');
 const updatedData = [];
-inputs.forEach((input, index) => {
+inputs.forEach((input) => {
     input.addEventListener('change', () => {
-        const id_discipline = input.getAttribute('data-id-discipline');
-        if (input.classList.contains('ressource')) {
-            const ressource = input.value
-            if (ressource <= 9) {
-                input.style.backgroundColor = "red";
-            } else {
-                input.style.backgroundColor = "green";
-                updatedData.push({
-                    id_discipline: id_discipline,
-                    ressource: ressource,
-                });
-            }
-        }
-        if (input.classList.contains('examen')) {
-            const examen = input.value
-            if (examen <= 9) {
-                input.style.backgroundColor = "red";
-            } else {
-                input.style.backgroundColor = "green";
-                updatedData.push({
-                    id_discipline: id_discipline,
-                    examen: examen,
-                });
-            }
-        }
-        
+        input.classList.add('changed');
+        // if (input.classList.contains('ressource')) {
+        //     const ressource = input.value
+        //     if (ressource <= 9) {
+        //         input.style.backgroundColor = "red";
+        //     } else {
+        //         input.style.backgroundColor = "green";
+        //         updatedData.push({
+        //             id_discipline: id_discipline,
+        //             ressource: ressource,
+        //         });
+        //     }
+        // }
+        // if (input.classList.contains('examen')) {
+        //     const examen = input.value
+        //     if (examen <= 9) {
+        //         input.style.backgroundColor = "red";
+        //     } else {
+        //         input.style.backgroundColor = "green";
+        //         updatedData.push({
+        //             id_discipline: id_discipline,
+        //             examen: examen,
+        //         });
+        //     }
+        // }
+
     })
-    
+
 });
 mettreAJourBtn.addEventListener('click', () => {
+    const changed = document.querySelectorAll('.changed');
+    const updatedData = [];
+    changed.forEach((input) => {
+        const id_disciplineDirection = input.getAttribute('data');
+        const Direction =id_disciplineDirection.split('_')
+        const id_discipline = Direction[0]
+        const direction = Direction[1]
+        const valeur = input.value
+        updatedData.push({
+            id_discipline: id_discipline,
+            valeur: valeur,
+            direction: direction
+        });
+    })
     if (updatedData.length > 0) {
         const data = {
             updatedData: updatedData
@@ -69,13 +83,13 @@ mettreAJourBtn.addEventListener('click', () => {
             method: 'POST',
             body: JSON.stringify(data)
         })
-        .catch(error => {
-            console.error('Une erreur s\'est produite lors de la mise à jour:', error);
-        });
-    }else{
+            .catch(error => {
+                console.error('Une erreur s\'est produite lors de la mise à jour:', error);
+            });
+    } else {
         alert('Aucune Modification est faite lors de la mise à jour');
     }
-    
+
 });
 
 
