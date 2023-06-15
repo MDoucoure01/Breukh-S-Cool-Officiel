@@ -1,3 +1,4 @@
+<?php include "template.html.php"?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +25,6 @@
     </nav>
     <div class="d-flex align-items-center justify-content-center navbar navbar-light bg-light w-25 position-relatve p-3"
         style="left: 47rem;top: 3rem;font-size: 2em; font-weight: bold;">Classe :
-        <?php echo $_POST['nom']; ?>
     </div>
     <div class="d-flex position-relative justify-content-between p-3 w-50" style="left: 30rem;top: 3rem;">
         <div>
@@ -38,6 +38,9 @@
                 <span class="input-group" id="basic-addon1">Discipline :</span>
                 <select class="form-select" aria-label="Default select example">
                     <option selected>Discipline :</option>
+                    <?php foreach($data[0] as $key => $ligne): ?>
+                    <option value="<?php echo $ligne['libelle']?>"><?php echo $ligne['libelle']?></option>
+                <?php endforeach;?>
                 </select>
             </div>
             <div class="mb-3">
@@ -65,40 +68,28 @@
                         <th>Suppression</th>
                     </tr>
                 </thead>
+
                 <tbody>
+                <?php foreach($data[1] as $key => $ligne): ?>
                     <tr>
                         <td>
-                            Mohamed
+                            <?php echo $ligne['prenom']; ?>
                         </td>
                         <td>
-                            Doucoure
+                            <?php echo $ligne['nom']; ?>
                         </td>
                         <td class="d-flex justify-content-center align-items-center">
                             <input type="number" class="form-control w-25" aria-label="Username" aria-describedby="basic-addon1"><label for="">/10</label>
                         </td>
                         <td>
                             <button type="button" class="btn btn-outline-danger supprimer" name="supprimer"
-                                data-id-discipline="<?php echo $ligne['id_discipline']; ?>">Supprimer</button>
+                                data-id-discipline="<?php echo $ligne['id_Eleve']; ?>">Supprimer</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            Mohamed
-                        </td>
-                        <td>
-                            Doucoure
-                        </td>
-                        <td class="d-flex justify-content-center align-items-center">
-                            <input type="number" class="form-control w-25" aria-label="Username" aria-describedby="basic-addon1"><label for="">/10</label>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-outline-danger supprimer" name="supprimer"
-                                data-id-discipline="<?php echo $ligne['id_discipline']; ?>">Supprimer</button>
-                        </td>
-                    </tr>
+                <?php endforeach;?>
                 </tbody>
             </table>
-            <button class="btn btn-outline-primary w-25 mettre-a-jour" type="button">Mettre A jour </button>
+            <button class="btn btn-outline-primary w-25 mettre-a-jour" type="button">Enregistrer</button>
         </form>
     </div>
 </body>

@@ -1,3 +1,4 @@
+<?php include "template.html.php"?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,6 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
 </head>
-
 <body>
     <nav class="navbar navbar-light bg-light w-75 position-relatve" style="left: 15rem;">
         <div class="container-fluid">

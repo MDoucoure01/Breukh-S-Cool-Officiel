@@ -1,3 +1,4 @@
+<?php include "template.html.php"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,9 +60,11 @@
                   </form>
                 </td>
                     <td>
-                      <input class="Modif" type="hidden" name="libelle" value="<?php echo $ligne['nom']; ?>">
-                      <button type="submit" class="btn btn-outline-primary btn-modifier" name="Modifier" data-bs-toggle="modal"   data-bs-target="#exampleModal">Modifier</button>
-                      <!-- <button type="button" class="btn btn-primary btn-modifier" data-bs-toggle="modal" data-bs-target="#exampleModal">Modif.</button> -->
+                    <form method="post" action="http://localhost:8080/Note/lister">
+                      <input type="hidden" name="nom" value="<?php echo $ligne['nom']; ?>">
+                      <input type="hidden" name="id_classe" value="<?php echo $ligne['id_classe']; ?>">
+                      <button type="submit" class="btn btn-outline-primary" name="afficher">Gerer Note</button>
+                    </form>
                     </td>
                     <td>
                       <form action="suppression" method="post">
