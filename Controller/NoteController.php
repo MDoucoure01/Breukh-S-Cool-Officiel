@@ -17,19 +17,23 @@ class NoteController extends Controller
             $id_classe = $_POST['id_classe'];
             $classe = $this->model->lister($id_classe);
             $discipline = $this->model->getDisciplineByClasse($id_classe);
-
-            // foreach ($classe as $key => $eleve) {
-            //     $classe[$key]['prenom'] = isset($eleve['prenom']) ? $eleve['prenom'] : '';
-            //     $classe[$key]['nom'] = isset($eleve['nom']) ? $eleve['nom'] : '';
-            // }
-
-            $data = array($discipline, $classe);
-
-            // echo "<pre>";
-            // var_dump($data);
-            // echo "<pre>";
+            $semestre = $this->model->getSemestreByClasse($id_classe);
+            $data = array($discipline, $classe, $semestre);
             $this->render("Classe.html", $data);
         }
+    }
+
+    public function getPonderation()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $updatedData = $data['updatedData'];
+
+        foreach ($updatedData as $item) {
+        $id_discipline = $item['id_discipline'];
+        }
+        $result = $this->model->getPonderation($id_discipline);
+        $encodedResult = json_encode($result);
+        echo $encodedResult;
     }
 
 }

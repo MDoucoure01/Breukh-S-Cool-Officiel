@@ -36,23 +36,29 @@
         <div class="d-flex position-relative justify-content-around w-75">
             <div class="mb-3">
                 <span class="input-group" id="basic-addon1">Discipline :</span>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select discipline" aria-label="Default select example">
                     <option selected>Discipline :</option>
                     <?php foreach($data[0] as $key => $ligne): ?>
-                    <option value="<?php echo $ligne['libelle']?>"><?php echo $ligne['libelle']?></option>
-                <?php endforeach;?>
+                        <option class="" data-id_classe="<?php echo $ligne['id_classe']?>" value="<?php echo $ligne['id_discipline']?>"><?php echo $ligne['libelle']?></option>
+                    <?php endforeach;?>
                 </select>
             </div>
             <div class="mb-3">
                 <span class="input-group" id="basic-addon1">Semestre :</span>
                 <select class="form-select" aria-label="Default select example">
                     <option selected>Semestre :</option>
+                    <?php foreach($data[2] as $key => $ligne): ?>
+                    <option value="<?php echo $ligne['id_semestre']?>"><?php echo $ligne['libelle']?></option>
+                    <?php endforeach;?>
+
                 </select>
             </div>
             <div class="mb-3">
                 <span class="input-group" id="basic-addon1">Note De :</span>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select noteDe" aria-label="Default select example">
                     <option selected>Note De :</option>
+                    <option value="ressource">ressource</option>
+                    <option value="examen">examen</option>
                 </select>
             </div>
         </div>
@@ -78,8 +84,8 @@
                         <td>
                             <?php echo $ligne['nom']; ?>
                         </td>
-                        <td class="d-flex justify-content-center align-items-center">
-                            <input type="number" class="form-control w-25" aria-label="Username" aria-describedby="basic-addon1"><label for="">/10</label>
+                        <td class="d-flex justify-content-center align-items-center blocNote">
+                            <input type="number" class="form-control w-25" aria-label="Username" aria-describedby="basic-addon1">
                         </td>
                         <td>
                             <button type="button" class="btn btn-outline-danger supprimer" name="supprimer"
@@ -92,6 +98,7 @@
             <button class="btn btn-outline-primary w-25 mettre-a-jour" type="button">Enregistrer</button>
         </form>
     </div>
+    <script src="http://localhost:8080/script3.js"></script>
 </body>
 
 </html>

@@ -31,4 +31,22 @@ class NoteModel
         $statement->execute();
         return $responce->recupfetchAll($statement);
     }
+
+    public function getSemestreByClasse($id)
+    {
+        $responce = new Dbconnexion();
+        $requete = "SELECT * FROM `semestre` WHERE id_classe = $id";
+        $statement = $this->pdo->prepare($requete);
+        $statement->execute();
+        return $responce->recupfetchAll($statement);
+    }
+
+    public function getPonderation($id_discipline)
+    {
+        $responce = new Dbconnexion();
+        $requete = "SELECT * FROM ClasseDiscipline WHERE id_discipline = $id_discipline";
+        $statement = $this->pdo->prepare($requete);
+        $statement->execute();
+        return $responce->recupfetchAll($statement);
+    }
 }
